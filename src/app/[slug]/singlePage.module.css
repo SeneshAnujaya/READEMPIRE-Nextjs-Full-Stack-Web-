@@ -63,8 +63,8 @@ padding-top: 3rem;
 }
 
 .post {
-    width: 75%;
-    /* flex: 5; */
+    /* width: 75%; */
+    flex: 5;
     margin-top: 60px;
 }
 
@@ -74,3 +74,35 @@ padding-top: 3rem;
     margin-bottom: 2rem;
     line-height: 1.5;
 }
+
+@media screen and (max-width: 1536px) {
+    .title {
+        font-size: 54px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .title {
+        font-size: 45px;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .imageContainer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .description p {
+        font-size: 1rem;
+    }
+}
+
+
+
