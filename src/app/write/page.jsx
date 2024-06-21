@@ -45,17 +45,19 @@ uploadTask.on('state_changed',
     }
   }, 
   (error) => {
-  
+    console.log(error);
   }, 
   () => {
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log(downloadURL);
       setMedia(downloadURL);
+
     });
   }
 );
       }
 
-      file && upload;
+      file && upload();
     },[file])
 
     if(status === 'loading') {
@@ -66,9 +68,9 @@ uploadTask.on('state_changed',
       router.push("/");
     }
 
-    const slugify = (str) => {
+    const slugify = (str) => 
       str.toLowerCase().trim().replace(/[^\w\s-]/g,"").replace(/[\s_-]+/g,"-").replace(/^-+|-+$/g,"");
-    }
+    
 
     const handleSubmit = async () => {
       const res = await fetch("/api/posts", {
@@ -77,7 +79,8 @@ uploadTask.on('state_changed',
           title,
           desc: value,
           img: media,
-          slug: slugify(title)
+          slug: slugify(title),
+          catSlug: "travel"
         })
       });
     }
@@ -87,6 +90,7 @@ uploadTask.on('state_changed',
   return (
     <div className={styles.container}>
         <input type='text' placeholder='Title' className={styles.input} onChange={e => setTitle(e.target.value)}/>
+        {/* TO ADD CATEGORY SELCET BOX */}
         <div className={styles.editor}>
             <button className={styles.button} onClick={() => setOpen(!open)}>
             <Image src="/plus.png" alt="" width={16} height={16} />
